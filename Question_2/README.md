@@ -26,8 +26,8 @@ Here's an example document to insert into the collection:
 
 4. To find restaurants containing the letters `'Reg'` as three letters somewhere in their names, run the following query:
 
-    db.restaurants.find(
-    { name: /Reg/ },
-    { restaurant_id: 1, name: 1, borough: 1, cuisine: 1 }
-    );
+        db.restaurants.find(
+        { name: /Reg/ },
+        { restaurant_id: 1, name: 1, borough: 1, cuisine: 1 }
+        );
 
