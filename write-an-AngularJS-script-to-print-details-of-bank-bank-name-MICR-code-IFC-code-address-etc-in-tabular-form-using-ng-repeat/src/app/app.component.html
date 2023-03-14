@@ -1,0 +1,11 @@
+<table border="1" [cellPadding]="10">
+  <tr>
+    <th *ngFor="let header of headings">{{header | titlecase}}</th>
+  </tr>
+  <tr *ngFor="let bank of banks">
+    <td>{{bank.name}}</td>
+    <td>{{bank.MICR}}</td>
+    <td>{{bank.IFC}}</td>
+    <td>{{bank.address}}</td>
+  </tr>
+</table>
