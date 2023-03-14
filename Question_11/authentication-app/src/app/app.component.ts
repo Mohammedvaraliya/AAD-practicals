@@ -15,10 +15,10 @@ export class AppComponent {
 
   login(username: string, password: string): void {
     const body = { username, password };
-    this.http.post('http://localhost:3000/api/login', body).subscribe(
-      (res) => {
+    this.http.post('http://localhost:3000/api/login', body, {headers: {'Content-Type': 'application/json'}}).subscribe(
+      (res: any) => {
         console.log(res);
-        alert('Login successful');
+        alert(res.message); // use the message property from the JSON response
       },
       (err) => {
         console.error(err);
