@@ -7,7 +7,7 @@ To create a database use the MongoDB Compass Client's GUI (also create a collect
 1. Add dummy data to the database
 
    ```bash
-   db.restaruants.insertMany(
+   db.restaurants.insertMany(
        [
            {
                name:"Jhon Hotel",
