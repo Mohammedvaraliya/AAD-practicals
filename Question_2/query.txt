@@ -1,0 +1,58 @@
+localhost:27017
+
+My Queries
+Databases
+
+Search
+Databases and Collections
+
+
+My Queries
+
+Databases
+
+Performance
+No saved queries yet.
+Start saving your aggregations and find queries, you'll see them here.
+
+Not sure where to start?  
+Visit our Docs →
+
+
+
+show collections
+restaruants
+restaurants
+root
+users
+ 
+ 
+use mydatabase
+'switched to db mydatabase'
+ 
+ 
+db.createCollection("restaurants")
+{ ok: 1 }
+ 
+db.restaurants.insertOne({
+  "restaurant_id": "12345",
+  "name": "Reggie's Pizza",
+  "borough": "Manhattan",
+  "cuisine": "Italian"
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64106ebc417443d0d821b088")
+}
+ 
+db.restaurants.find(
+  { name: /Reg/ },
+  { restaurant_id: 1, name: 1, borough: 1, cuisine: 1 }
+);
+{
+  _id: ObjectId("64106ebc417443d0d821b088"),
+  restaurant_id: '12345',
+  name: "Reggie's Pizza",
+  borough: 'Manhattan',
+  cuisine: 'Italian'
+}
