@@ -28,8 +28,4 @@
             d. Spinner
 3. Create an Android application to demonstrate implicit and explicit intents.
 4. Create a media player application in android that plays audio. Implement play, pause, and loop features.
-5. Create an Android application to demonstrate the different types of menus.
-
-        a. Pop-up Menu
-        b. Context Menu
-        c. Option Menu
+5. Implement Activity Life Cycle.
