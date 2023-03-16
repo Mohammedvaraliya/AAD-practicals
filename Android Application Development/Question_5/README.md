@@ -19,17 +19,172 @@ The application has a single activity that overrides all of the activity lifecyc
 
 Each of these methods returns a Toast message that indicates which method is currently being executed.
 
-### Installation
+1. Layout file - `activity_main.xml`
+    
+    ```xml
+        <?xml version="1.0" encoding="utf-8"?>
+        <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context=".MainActivity">
 
-1. Clone this repository: 
+        <TextView
+                android:id="@+id/tv_heading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ACTIVITY LIFE CYCLE"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:padding="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        git clone https://github.com/Mohammedvaraliya/BSC-CS-Practical-Performed.git
-2. Open the project in Android Studio
-3. Build and run the project on an emulator or physical device
+        <TextView
+                android:id="@+id/tv_oncreate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onCreate()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_heading"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-### Usage
+        <TextView
+                android:id="@+id/tv_onstart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onStart()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@+id/tv_oncreate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-Once the application is installed on your device, open the application to see the activity lifecycle methods in action. The application will display a Toast message each time a lifecycle method is called, indicating which method is being executed.
+        <TextView
+                android:id="@+id/tv_oncresume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onResume()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_onstart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_onpause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onPause()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_oncresume"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_onstop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onStop()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_onpause"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_ondestroy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onDestroy()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_onstop"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+                android:id="@+id/tv_onrestart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="onRestart()"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_ondestroy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    ```
+
+2. Activity file - `MainActivity.kt`
+    
+    ```kotlin
+        package com.example.Question_5
+
+        import android.os.Bundle
+        import android.os.PersistableBundle
+        import android.widget.Toast
+        import androidx.appcompat.app.AppCompatActivity
+
+        class MainActivity : AppCompatActivity() {
+        override fun onCreate(savedInstanceState: Bundle?) {
+                super.onCreate(savedInstanceState)
+                setContentView(R.layout.activity_main)
+                Toast.makeText(this, "You are in onCreate activity", Toast.LENGTH_SHORT).show()
+        }
+
+        override fun onStart() {
+                super.onStart()
+                Toast.makeText(this, "You are in onStart activity", Toast.LENGTH_SHORT).show()
+
+
+        }
+
+        override fun onResume() {
+                super.onResume()
+                Toast.makeText(this, "You are in onResume activity", Toast.LENGTH_SHORT).show()
+
+        }
+
+        override fun onPause() {
+                super.onPause()
+                Toast.makeText(this, "You are in onPause activity", Toast.LENGTH_SHORT).show()
+
+        }
+
+        override fun onStop() {
+                super.onStop()
+                Toast.makeText(this, "You are in onStop activity", Toast.LENGTH_SHORT).show()
+
+        }
+
+        override fun onDestroy() {
+                super.onDestroy()
+                Toast.makeText(this, "You are in onDestroy activity", Toast.LENGTH_SHORT).show()
+
+        }
+
+        override fun onRestart() {
+                super.onRestart()
+                Toast.makeText(this, "You are in onnRestart activity", Toast.LENGTH_SHORT).show()
+
+        }
+        }
+    ```
 
 ### Overview
 
@@ -37,7 +192,3 @@ Once the application is installed on your device, open the application to see th
 
 ![Frame 5](https://user-images.githubusercontent.com/95087498/221184490-d1b0cc63-627f-45d9-b193-02d908616f20.png)
 
-
-### Contributing
-
-Contributions are always welcome! If you have any ideas or suggestions for improving the app, feel free to create a pull request or open an issue.
