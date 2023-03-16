@@ -74,113 +74,59 @@ Aim: ```Create a media player application in android that plays audio. Implement
 
 3. Create a directory named `raw` in the `res` folder and add the following file.
 
-    
+
+    <a href="https://github.com/Mohammedvaraliya/AAD-practicals/blob/master/Android%20Application%20Development/Question_4/app/src/main/res/raw/Animals_matrin_garrix.mp3">Download Music</a>
+
+    click on raw, it will download automatically
 
 
-4. Activity file - `PracticalFourOne.kt`
+4. Layout file - `question_four.kt`
     
     ```kotlin
-    package com.example.android_practical_04
+    package com.example.question_4
 
-    import android.content.Intent
-    import android.content.pm.PackageManager
-    import android.net.Uri
-    import android.os.Bundle
+    import android.media.MediaPlayer
     import androidx.appcompat.app.AppCompatActivity
-    import androidx.appcompat.widget.AppCompatButton
-    import androidx.core.app.ActivityCompat
-    import androidx.core.content.ContextCompat
-    import com.example.android_practical_04.HomeActivity
-    import com.example.android_practical_04.R
-    import com.example.android_practical_04.ActivityLifecycle
-
+    import android.os.Bundle
+    import android.widget.Button
 
     class MainActivity : AppCompatActivity() {
 
-        private lateinit var buttonCall: AppCompatButton
-        private lateinit var buttonDial: AppCompatButton
-        private lateinit var buttonBrowser: AppCompatButton
-        private lateinit var buttonHome: AppCompatButton
-        private lateinit var buttonActivityLifeCycle: AppCompatButton
+        lateinit var btnStop: Button
+        lateinit var btnPlay : Button
+        lateinit var btnPause: Button
 
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_main)
-            buttonCall = findViewById(R.id.btn_implicit_call)
-            buttonDial = findViewById(R.id.btn_implicit_dial)
-            buttonBrowser = findViewById(R.id.btn_implicit_browser)
-            buttonHome = findViewById(R.id.btn_home)
-            buttonActivityLifeCycle = findViewById(R.id.btn_activity_lifecycle)
+            initComponent()
+            initClick()
+        }
 
+        private fun initComponent() {
+            btnStop = findViewById(R.id.btn_stop)
+            btnPlay = findViewById(R.id.btn_play)
+            btnPause = findViewById(R.id.btn_pause)
+        }
 
-            this.buttonCall.setOnClickListener{
-                if (ContextCompat.checkSelfPermission(this,android.Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.CALL_PHONE),100)
-                } else {
-                    val intent = Intent(Intent.ACTION_CALL, Uri.parse("tel:" + "+91123456789"))
-                    startActivity(intent)
-                }
+        private fun initClick() {
+            val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.Animals_matrin_garrix)
+
+            btnStop.setOnClickListener{
+                mediaPlayer.stop()
+                mediaPlayer.prepare()
             }
 
-            buttonDial.setOnClickListener{
-                val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + "+91123456789"))
-                startActivity(intent)
+            btnPlay.setOnClickListener{
+                mediaPlayer.start()
             }
 
-            buttonBrowser.setOnClickListener{
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.google.co.in/"))
-                startActivity(intent)
-            }
-
-            buttonHome.setOnClickListener{
-                val intent = Intent(this,HomeActivity::class.java)
-                startActivity(intent)
-            }
-
-            buttonActivityLifeCycle.setOnClickListener{
-                val intent = Intent(this,ActivityLifecycle::class.java)
-                startActivity(intent)
+            btnPause.setOnClickListener{
+                mediaPlayer.pause()
             }
         }
     }
     ```
-
-
-5. Activity file - `HomeActivity.kt`
-
-    ```kotlin
-    package com.example.android_practical_04
-
-    import android.os.Bundle
-    import androidx.appcompat.app.AppCompatActivity
-
-    class HomeActivity : AppCompatActivity() {
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.home_activity)
-        }
-    }
-    ```
-
-
-6. Activity file - `ActivityLifeCycle.kt`
-
-    ```kotlin
-    package com.example.android_practical_04
-
-    import android.os.Bundle
-    import androidx.appcompat.app.AppCompatActivity
-
-    class ActivityLifecycle: AppCompatActivity() {
-
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            setContentView(R.layout.activity_life_cycle)
-        }
-    }
-    ```
-
     
 
 ## Output
