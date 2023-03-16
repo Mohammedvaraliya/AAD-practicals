@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initClick() {
-        val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.Animals_matrin_garrix)
+        val mediaPlayer: MediaPlayer = MediaPlayer.create(applicationContext, R.raw.animals_matrin_garrix)
 
         btnStop.setOnClickListener{
             mediaPlayer.stop()
